@@ -1,0 +1,14 @@
+{
+  "name": "s3",
+  "repo": "camshaft/s3",
+  "version": "0.1.0",
+  "scripts": [
+    "index.js"
+  ],
+  "dependencies": {
+    "camshaft/s3-1": "master",
+    "component/emitter": "^1.1.2",
+    "component/mime": "~0.0.1",
+    "camshaft/iframe-multipart": "master"
+  }
+}
