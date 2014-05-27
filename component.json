@@ -8,7 +8,7 @@
   "dependencies": {
     "camshaft/s3-1": "master",
     "component/emitter": "^1.1.2",
-    "benxamin/mime": "^0.0.2",
+    "component/mime": "^0.0.2",
     "camshaft/iframe-multipart": "master"
   }
 }
