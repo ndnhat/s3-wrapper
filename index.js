@@ -106,12 +106,12 @@ Upload.prototype.end = function(fn) {
     // reset the file input
     el.setAttribute('name', oldName);
     clone.parentNode.insertBefore(el, clone);
-    clone.remove();
+    clone.parentNode.removeChild(clone);
 
     if (err) return fn(err);
     fn(null, url, res);
   });
-}
+};
 
 /**
  * Create an element with attributes
