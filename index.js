@@ -28,7 +28,7 @@ function Upload(el, opts, config) {
   opts = this.opts = opts || {};
   config = this.config = copy(config || opts.config || window.S3);
 
-  this.filename = el.value.split('fakepath\\')[1];
+  this.filename = el.value.split('fakepath\\')[1].split("#").join("");
   this.name = (opts.format ? opts.format : formatName)(config.prefix, this.filename);
 
   if (!opts.protocol) opts.protocol = window.location.protocol;
