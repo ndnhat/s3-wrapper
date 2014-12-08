@@ -34,7 +34,7 @@ function Upload(el, opts, config) {
 
   if (!opts.protocol) opts.protocol = window.location.protocol;
   this.bucketUrl = opts.protocol + '//' + config.bucket + '.s3.amazonaws.com';
-  this.url = this.bucketUrl + '/' + this.name;
+  this.url = (config.cdn || this.bucketUrl) + '/' + this.name;
   if (opts.redirect) config.redirect = opts.redirect;
 
   // we don't have the file api
