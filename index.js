@@ -33,7 +33,7 @@ function Upload(el, opts, config) {
   this.name = (opts.format ? opts.format : formatName)(config.prefix, this.filename);
 
   if (!opts.protocol) opts.protocol = window.location.protocol;
-  this.bucketUrl = opts.protocol + '//' + config.bucket + '.s3.amazonaws.com';
+  this.bucketUrl = opts.proxy || opts.protocol + '//' + config.bucket + '.s3.amazonaws.com';
   this.url = (config.cdn || this.bucketUrl) + '/' + this.name;
   if (opts.redirect) config.redirect = opts.redirect;
 
