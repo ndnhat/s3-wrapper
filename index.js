@@ -33,9 +33,10 @@ function Upload(el, opts, config) {
   this.name = (opts.format ? opts.format : formatName)(config.prefix, this.filename);
 
   if (!opts.protocol) opts.protocol = window.location.protocol;
-  this.bucketUrl = opts.proxy || opts.protocol + '//' + config.bucket + '.s3.amazonaws.com';
+  this.bucketUrl = opts.protocol + '//' + config.bucket + '.s3.amazonaws.com';
   this.url = (config.cdn || this.bucketUrl) + '/' + this.name;
   if (opts.redirect) config.redirect = opts.redirect;
+  if (opts.proxy) this.proxy = opts.proxy;
 
   // we don't have the file api
   if (!el.files) return this;
@@ -69,7 +70,7 @@ Upload.prototype.end = function(fn) {
     'accept-charset': '',
     'enctype': 'multipart/form-data',
     method: 'POST',
-    action: this.bucketUrl
+    action: this.proxy || this.bucketUrl
   });
 
   // setup inputs with their values
