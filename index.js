@@ -29,7 +29,7 @@ function Upload(el, opts, config) {
   config = this.config = copy(config || opts.config || window.S3);
 
   var filename = el.value.replace(/^C:\\fakepath\\/i, '');
-  this.filename = filename.replace(/[\(\)%\+#]/g, '');
+  this.filename = filename.replace(/[\(\)%\+#\'\"]/g, '');
   this.name = (opts.format ? opts.format : formatName)(config.prefix, this.filename);
 
   if (!opts.protocol) opts.protocol = window.location.protocol;
