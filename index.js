@@ -30,7 +30,10 @@ function Upload(el, opts, config) {
 
   // Get extension.
   var parts = el.value.split('.');
-  var extension = ('.' + parts[parts.length - 1].toLowerCase()) || "";
+  var extension = "";
+  if (parts.length > 1) {
+    extension = '.' + parts[parts.length - 1].toLowerCase();
+  }
 
   // Date.now polyfill for IE8.
   if (!Date.now) { Date.now = function now() { return +(new Date()); }; }
