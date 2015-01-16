@@ -28,8 +28,18 @@ function Upload(el, opts, config) {
   opts = this.opts = opts || {};
   config = this.config = copy(config || opts.config || window.S3);
 
-  var filename = el.value.replace(/^C:\\fakepath\\/i, '');
-  this.filename = filename.replace(/[\(\)%\+#\'\"]/g, '');
+  // Get extension.
+  var parts = el.value.split('.');
+  var extension = "";
+  if (parts.length > 1) {
+    extension = '.' + parts[parts.length - 1].toLowerCase();
+  }
+
+  // Date.now polyfill for IE8.
+  if (!Date.now) { Date.now = function now() { return +(new Date()); }; }
+  var now = Date.now();
+
+  this.filename = (now).toString() + extension;
   this.name = (opts.format ? opts.format : formatName)(config.prefix, this.filename);
 
   if (!opts.protocol) opts.protocol = window.location.protocol;
